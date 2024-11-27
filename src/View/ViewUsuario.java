@@ -6,10 +6,6 @@ public class ViewUsuario {
 
     public static Scanner scan = new Scanner(System.in);
 
-    //Método para facilitar o sout
-    public void exibirMensagem(String mensagem){
-        System.out.println(mensagem);
-    }
 
     public String lerUsuario(){
         System.out.println("Digite o usuário: ");

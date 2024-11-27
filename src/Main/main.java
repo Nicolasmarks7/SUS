@@ -1,15 +1,22 @@
 package Main;
 
+import Controller.ControllerMain;
 import Controller.ControllerUsuario;
 import Model.Usuario;
+import View.ViewMain;
 import View.ViewUsuario;
 
 public class main {
     public static void main(String[] args) {
-        Usuario usuario = new Usuario();
+
+        new ControllerMain();
+
+        /*Usuario usuario = new Usuario();
         ViewUsuario viewUsuario = new ViewUsuario();
-        ControllerUsuario controllerUsuario = new ControllerUsuario(usuario,viewUsuario);
+        ViewMain viewMain = new ViewMain();
+        ControllerUsuario controllerUsuario = new ControllerUsuario(usuario,viewUsuario,viewMain);
         
-        controllerUsuario.iniciarAutenticacao();
+        controllerUsuario.iniciarAutenticacao();*/
+
     }
 }
