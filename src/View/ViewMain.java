@@ -1,11 +1,13 @@
 package View;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ViewMain {
 
     private Scanner scan = new Scanner(System.in);
     private int opcao;
+    private ArrayList<String> login = new ArrayList<>();
 
     //menu inicial
     public int telaInicial(){
@@ -24,6 +26,21 @@ public class ViewMain {
             }
         }while(opcao<1||opcao>3);
         return opcao;
+    }
+
+    public ArrayList<String> telaLogin(){
+        String email = "";
+        String senha = "";
+        while(email==null || senha==null || email.isEmpty() || senha.isEmpty()){
+            exibirMensagem("Digite o email:");
+            email = scan.next();
+            login.add(email);
+            exibirMensagem("Digite a senha:");
+            senha = scan.next();
+            login.add(senha);
+        }
+
+        return login;
     }
 
 
