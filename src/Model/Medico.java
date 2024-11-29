@@ -8,6 +8,10 @@ public class Medico {
     private String email;
     private int telefone;
 
+    public Medico(){
+
+    }
+
     public Medico(String nome, String especialidade,
                   int CRM, String email, int telefone) {
         this.nome = nome;

@@ -8,6 +8,10 @@ public class Alerta {
     private Medico medico;
     private String data;
 
+    public Alerta(){
+
+    }
+
     public Alerta(String tipo, String mensagem, Paciente paciente, Medico medico, String data) {
         this.tipo = tipo;
         this.mensagem = mensagem;

@@ -9,6 +9,10 @@ public class Medicamento {
     private String dataVenc;
     private String prescricao;
 
+    public Medicamento(){
+
+    }
+
     public Medicamento(String nome, int dosagem, int frequencia,
                        String descricao, String dataVenc, String prescricao) {
         this.nome = nome;

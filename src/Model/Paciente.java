@@ -12,6 +12,10 @@ public class Paciente {
     private Medicamento medicamento;
     private Dispositivo dispositivo;
 
+    public Paciente() {
+
+    }
+
     //construtor sem medicamento e dispositivo caso não precise
     public Paciente(String nome, String cpf, String dataNasc, String endereco, int telefone, String email, String historico) {
         this.nome = nome;

@@ -8,6 +8,10 @@ public class Dispositivo {
     private String status;
     private int valor;
 
+    public Dispositivo(){
+
+    }
+
     public Dispositivo(String tipo, String marca, String modelo, String status, int valor) {
         this.tipo = tipo;
         this.marca = marca;

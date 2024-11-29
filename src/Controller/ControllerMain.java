@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Paciente;
 import View.ViewMain;
 
 import java.util.ArrayList;
@@ -23,7 +24,8 @@ public class ControllerMain {
                     break;
                 case 2:
                     ControllerPaciente controllerPaciente = new ControllerPaciente();
-                    controllerPaciente.createPaciente();
+                    Paciente paciente = new Paciente();
+                    controllerPaciente.createPaciente(paciente);
                     break;
                 case 3:
                     break;

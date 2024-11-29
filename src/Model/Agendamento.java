@@ -9,6 +9,10 @@ public class Agendamento {
     private String diagnostico;
     private Medicamento medicamento;
 
+    public Agendamento(){
+
+    }
+
     public Agendamento(String data, String hora, Paciente paciente,
                        Medico medico, String diagnostico, Medicamento medicamento) {
         this.data = data;

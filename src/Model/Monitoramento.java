@@ -6,6 +6,10 @@ public class Monitoramento {
     private Dispositivo dispositivo;
     private String dados;
 
+    public Monitoramento(){
+
+    }
+
     public Monitoramento(Paciente paciente, Dispositivo dispositivo, String dados) {
         this.paciente = paciente;
         this.dispositivo = dispositivo;
