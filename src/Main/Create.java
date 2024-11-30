@@ -1,33 +1,49 @@
 package Main;
 
+import Model.Medico;
 import Model.Paciente;
-import View.ViewMain;
 
 import java.util.Scanner;
 
 public class Create {
 
-    ViewMain view = new ViewMain();
+    Menu menu = new Menu();
     Scanner scan = new Scanner(System.in);
 
-    public Paciente pacienteCriar(Paciente paciente){
+    public Paciente criarPaciente(Paciente paciente){
 
-        view.exibirMensagem("Digite o nome: ");
+        menu.exibirMensagem("Digite o nome: ");
         paciente.setNome(scan.nextLine());
-        view.exibirMensagem("Digite o cpf: ");
+        menu.exibirMensagem("Digite o cpf: ");
         paciente.setCpf(scan.nextLine());
-        view.exibirMensagem("Digite a data de nascimento no formato dd/mm/aaaa: ");
+        menu.exibirMensagem("Digite a data de nascimento no formato dd/mm/aaaa: ");
         paciente.setDataNasc(scan.nextLine());
-        view.exibirMensagem("Digite o endereco: ");
+        menu.exibirMensagem("Digite o endereco: ");
         paciente.setEndereco(scan.nextLine());
-        view.exibirMensagem("Digite o telefone: ");
+        menu.exibirMensagem("Digite o telefone: ");
         paciente.setTelefone(scan.nextInt());
-        view.exibirMensagem("Digite o email: ");
+        menu.exibirMensagem("Digite o email: ");
         paciente.setEmail(scan.nextLine());
-        view.exibirMensagem("Digite o historico hospitalar: ");
+        menu.exibirMensagem("Digite o historico hospitalar: ");
         paciente.setHistorico(scan.nextLine());
 
         return paciente;
+    }
+
+    public Medico criarMedico(Medico medico){
+
+        menu.exibirMensagem("Digite o nome: ");
+        medico.setNome(scan.nextLine());
+        menu.exibirMensagem("Digite a especialidade: ");
+        medico.setEspecialidade(scan.nextLine());
+        menu.exibirMensagem("Digite o CRM: ");
+        medico.setCRM(scan.nextInt());
+        menu.exibirMensagem("Digite o email: ");
+        medico.setEmail(scan.nextLine());
+        menu.exibirMensagem("Digite o telefone: ");
+        medico.setTelefone(scan.nextInt());
+
+        return medico;
     }
 
 }

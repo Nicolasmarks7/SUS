@@ -1,31 +1,48 @@
 package Controller;
 
+import Main.Login;
+import Main.Menu;
+import Model.Medico;
 import Model.Paciente;
-import View.ViewMain;
 
 import java.util.ArrayList;
 
 public class ControllerMain {
 
-    ViewMain view = new ViewMain();
+    private Menu menu = new Menu();
 
     public ControllerMain(){
 
         int opcao;
-        //view.exibirMensagem(""+opcao);
 
         do{
-            opcao = view.telaInicial();
+            opcao = menu.menuInicial();
             switch(opcao){
                 case 1:
-                    ArrayList<String> login = view.telaLogin();
-                    for(int i=0;i<login.size();i++)view.exibirMensagem(""+ login.get(i));
-                    //login.clear();
+                    ArrayList<String> login = menu.menuLogin(); //Array esta recebendo o nome e email de login
+                    boolean checkMedico = ControllerMedico.checaExistente(login);
+                    boolean checkPaciente = ControllerPaciente.checaExistente(login);
+                    Login entrar = new Login();
+                    entrar.verificador(checkMedico,checkPaciente);
                     break;
                 case 2:
-                    ControllerPaciente controllerPaciente = new ControllerPaciente();
-                    Paciente paciente = new Paciente();
-                    controllerPaciente.createPaciente(paciente);
+                    int opcaoRegistro = menu.menuRegistrar();
+                    switch(opcaoRegistro){
+                        case 1:
+                            ControllerPaciente controllerPaciente = new ControllerPaciente();
+                            Paciente paciente = new Paciente();
+                            controllerPaciente.createPaciente(paciente);
+                            break;
+                        case 2:
+                            ControllerMedico controllerMedico = new ControllerMedico();
+                            Medico medico = new Medico();
+                            controllerMedico.createMedico(medico);
+                            break;
+                        case 3:
+                            break;
+                        default:
+                            break;
+                    }
                     break;
                 case 3:
                     break;

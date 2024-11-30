@@ -1,5 +1,6 @@
 package Controller;
 
+import Main.Menu;
 import Model.Usuario;
 import View.ViewMain;
 import View.ViewUsuario;
@@ -10,15 +11,15 @@ public class ControllerUsuario {
 
     private final Usuario usuario;
     private final ViewUsuario viewUsuario;
-    private final ViewMain viewMain;
+    private final Menu menu;
 
-    public ControllerUsuario(Usuario usuario, ViewUsuario viewUsuario, ViewMain viewMain){
+    public ControllerUsuario(Usuario usuario, ViewUsuario viewUsuario, Menu menu){
         this.usuario = usuario;
         this.viewUsuario = viewUsuario;
-        this.viewMain = viewMain;
+        this.menu = menu;
     }
 
-    // Método principal para autenticação
+    // Metodo principal para autenticação
     public void iniciarAutenticacao() {
 
         // Usuário terá 3 tentativas de acerto
@@ -29,17 +30,17 @@ public class ControllerUsuario {
             String senhacontroller = viewUsuario.lerSenha();
 
             if (usuario.autenticarUsuario(usuariocontroller, senhacontroller)) {
-                viewMain.exibirMensagem("Bem-vindo!\nAcesso concedido.");
+                menu.exibirMensagem("Bem-vindo!\nAcesso concedido.");
                 return;
             } else {
                 tentativas--;
-                viewMain.exibirMensagem("Usuário ou senha incorretos.");
+                menu.exibirMensagem("Usuário ou senha incorretos.");
                 if (tentativas > 0) {
-                    viewMain.exibirMensagem("Tentativas restantes: " + tentativas);
+                    menu.exibirMensagem("Tentativas restantes: " + tentativas);
                 }
             }
         }
-        viewMain.exibirMensagem("Número de tentativas excedido. Acesso bloqueado.");
+        menu.exibirMensagem("Número de tentativas excedido. Acesso bloqueado.");
         scan.close();
     }
 }
