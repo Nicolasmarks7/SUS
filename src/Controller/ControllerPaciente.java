@@ -1,6 +1,7 @@
 package Controller;
 
 import Main.Create;
+import Model.Medico;
 import Model.Paciente;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +32,10 @@ public class ControllerPaciente {
         boolean check = false;
 
         return check;
+    }
+
+    public static List<Paciente> retornaLista(){
+        return pacienteList;
     }
 
 }

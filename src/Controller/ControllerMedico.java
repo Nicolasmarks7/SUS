@@ -33,4 +33,8 @@ public class ControllerMedico {
         return check;
     }
 
+    public static List<Medico> retornaLista(){
+        return medicoList;
+    }
+
 }

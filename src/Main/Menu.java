@@ -47,6 +47,7 @@ public class Menu {
     }
 
     public ArrayList<String> menuLogin(){
+        login.clear();
         String nome = "";
         String email = "";
         while(nome==null || email==null || nome.isEmpty() || email.isEmpty()){

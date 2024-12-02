@@ -6,6 +6,7 @@ import Model.Medico;
 import Model.Paciente;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ControllerMain {
 
@@ -14,14 +15,28 @@ public class ControllerMain {
     public ControllerMain(){
 
         int opcao;
+        boolean checkMedico = false;
+        boolean checkPaciente = false;
 
         do{
             opcao = menu.menuInicial();
             switch(opcao){
                 case 1:
                     ArrayList<String> login = menu.menuLogin(); //Array esta recebendo o nome e email de login
-                    boolean checkMedico = ControllerMedico.checaExistente(login);
-                    boolean checkPaciente = ControllerPaciente.checaExistente(login);
+                    List<Medico> medicoList = ControllerMedico.retornaLista();
+                    for(Medico medico: medicoList){
+                        if(medico.getNome().equals(login.get(0)) && medico.getEmail().equals(login.get(1))){
+                            checkMedico = true;
+                        }
+                    }
+                    if(!checkMedico){
+                        List<Paciente> pacienteList = ControllerPaciente.retornaLista();
+                        for (Paciente paciente:pacienteList){
+                            if(paciente.getNome().equals(login.get(0)) && paciente.getEmail().equals(login.get(1))){
+                                checkPaciente = true;
+                            }
+                        }
+                    }
                     Login entrar = new Login();
                     entrar.verificador(checkMedico,checkPaciente);
                     break;
