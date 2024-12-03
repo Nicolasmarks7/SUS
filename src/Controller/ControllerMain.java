@@ -15,17 +15,20 @@ public class ControllerMain {
     public ControllerMain(){
 
         int opcao;
-        boolean checkMedico = false;
-        boolean checkPaciente = false;
+        ArrayList<String> login = new ArrayList<>();
 
         do{
             opcao = menu.menuInicial();
+            boolean checkMedico = false;
+            boolean checkPaciente = false;
             switch(opcao){
                 case 1:
-                    ArrayList<String> login = menu.menuLogin(); //Array esta recebendo o nome e email de login
+                    login.clear();
+                    login = menu.menuLogin(); //Array esta recebendo o nome e email de login
                     List<Medico> medicoList = ControllerMedico.retornaLista();
                     for(Medico medico: medicoList){
                         if(medico.getNome().equals(login.get(0)) && medico.getEmail().equals(login.get(1))){
+                            menu.exibirMensagem(medico.getNome() + " " + medico.getEmail());
                             checkMedico = true;
                         }
                     }
