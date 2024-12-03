@@ -46,4 +46,8 @@ public class Create {
         return medico;
     }
 
+    public static void cadastros(int opcao){
+
+    }
+
 }
