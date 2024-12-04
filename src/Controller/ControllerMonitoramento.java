@@ -1,22 +1,31 @@
 package Controller;
 
+import Main.Create;
 import Model.Monitoramento;
+import View.ViewMain;
 
+import javax.swing.text.View;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ControllerMonitoramento {
 
-    private static List<Monitoramento> monitoramentoList = new ArrayList<Monitoramento>();
+    private static List<Monitoramento> monitoramentoList = new ArrayList<>();
+    Create create = new Create();
 
     //Adiciona um Monitoramento
-    public static void createMonitoramento (Monitoramento monitoramento){
-        monitoramentoList.add(monitoramento);
+    public void createMonitoramento (Monitoramento monitoramento){
+        monitoramentoList.add(create.criarMonitoramento(monitoramento));
     }
     //Visualiza/Busca um Monitoramento
     public static void readMonitoramento (Monitoramento monitoramento){
 
     }
+
+    public static void readMonitoramentos(){
+        ViewMain.viewMonitoramentos(monitoramentoList);
+    }
+
     //Atualiza um Monitoramento
     public static void updateMonitoramento (Monitoramento monitoramento){
 

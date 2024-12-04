@@ -1,23 +1,31 @@
 package Controller;
 
 
+import Main.Create;
 import Model.Alerta;
+import View.ViewMain;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ControllerAlerta {
 
-    private static List<Alerta> alertaList = new ArrayList<Alerta>();
+    private static List<Alerta> alertaList = new ArrayList<>();
+    Create create = new Create();
 
     //Adiciona um Alerta
-    public static void createAlerta (Alerta alerta){
-        alertaList.add(alerta);
+    public void createAlerta (Alerta alerta){
+        alertaList.add(create.criarAlerta(alerta));
     }
     //Visualiza/Busca um Alerta
     public static void readAlerta (Alerta alerta){
 
     }
+
+    public static void readAlertas(){
+        ViewMain.viewAlertas(alertaList);
+    }
+
     //Atualiza um Alerta
     public static void updateAlerta (Alerta alerta){
 

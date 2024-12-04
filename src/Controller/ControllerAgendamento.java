@@ -1,22 +1,30 @@
 package Controller;
 
+import Main.Create;
 import Model.Agendamento;
+import View.ViewMain;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ControllerAgendamento {
 
-    private static List<Agendamento> agendamentoList = new ArrayList<Agendamento>();
+    private static List<Agendamento> agendamentoList = new ArrayList<>();
+    Create create = new Create();
 
     //Adiciona um agendamento
-    public static void createAgendamento (Agendamento agendamento){
-        agendamentoList.add(agendamento);
+    public void createAgendamento (Agendamento agendamento){
+        agendamentoList.add(create.criarAgendamento(agendamento));
     }
     //Visualiza/Busca um Agendamento
     public static void readAgendamento (Agendamento agendamento){
 
     }
+
+    public static void readAgendamentos(){
+        ViewMain.viewAgendamentos(agendamentoList);
+    }
+
     //Atualiza um Agendamento
     public static void updateAgendamento (Agendamento agendamento){
 

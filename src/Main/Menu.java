@@ -81,24 +81,23 @@ public class Menu {
                         }
                         break;
                     case 2:
-                        exibirMensagem("---Menu Listagem---\n1-Listar Medicamento\n2-Listar Dispositivo\n3-Listar Monitoramento" +
-                                "\n4-Listar Alerta\n5- Voltar");
+                        exibirMensagem("---Menu Listagem---\n1-Listar Agendamentos\n2-Listar Medicamento\n3-Listar Dispositivo" +
+                                "\n4-Listar Monitoramento\n5- Listar Alerta\n6-Voltar.");
                         opcaoMenu=scan.nextInt();
-                        if(opcaoMenu>0&&opcaoMenu<5){
+                        if(opcaoMenu>0&&opcaoMenu<6){
                             Read.listagem(opcaoMenu);
-                        }else if(opcaoMenu==5){
+                        }else if(opcaoMenu==6){
 
                         }else{
                             exibirMensagem("Opção inválida");
                         }
                         break;
                     case 3:
-                        exibirMensagem("---Menu Alteração---\n1-Alterar Medicamento\n2-Alterar Dispositivo\n3-Alterar Monitoramento" +
-                                "\n4-Alterar Alerta\n5- Voltar");
+                        exibirMensagem("---Menu Alteração---\n1-Alterar Medicamento\n2-Alterar seus dados\n3-Alterar dados do paciente\n4- Voltar");
                         opcaoMenu=scan.nextInt();
-                        if(opcaoMenu>0&&opcaoMenu<5){
+                        if(opcaoMenu>0&&opcaoMenu<4){
                             Update.atualizar(opcaoMenu);
-                        }else if(opcaoMenu==5){
+                        }else if(opcaoMenu==4){
 
                         }else{
                             exibirMensagem("Opção inválida");
@@ -132,12 +131,12 @@ public class Menu {
                     Create.cadastros(5);
                     break;
                 case 2:
-                    exibirMensagem("---Menu Listagem---\n1-Listar Medicamento\n2-Listar Dispositivo\n3-Listar Monitoramento" +
-                            "\n4-Listar Alerta\n5- Voltar");
+                    exibirMensagem("---Menu Listagem---\n1-Listar Agendamentos\n2-Listar Medicamento\n3-Listar Dispositivo" +
+                            "\n4-Listar Monitoramento\n5- Listar Alerta\n6-Voltar.");
                     opcaoMenu=scan.nextInt();
-                    if(opcaoMenu>0&&opcaoMenu<5){
+                    if(opcaoMenu>0&&opcaoMenu<6){
                         Read.listagem(opcaoMenu);
-                    }else if(opcaoMenu==5){
+                    }else if(opcaoMenu==6){
 
                     }else{
                         exibirMensagem("Opção inválida");

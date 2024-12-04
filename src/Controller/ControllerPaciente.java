@@ -3,6 +3,8 @@ package Controller;
 import Main.Create;
 import Model.Medico;
 import Model.Paciente;
+import View.ViewMain;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +21,11 @@ public class ControllerPaciente {
     public static void readPaciente (Paciente paciente){
 
     }
+
+    public static void readPacientes(){
+        ViewMain.viewPacientes(pacienteList);
+    }
+
     //Atualiza um paciente
     public static void updatePaciente (Paciente paciente){
 
