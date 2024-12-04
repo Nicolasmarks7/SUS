@@ -58,7 +58,6 @@ public class Menu {
             email = scan.next();
             login.add(email);
         }
-
         return login;
     }
 
@@ -126,10 +125,33 @@ public class Menu {
                 }
             }while(opcao!=5);
         }else{
+            exibirMensagem("---Menu Paciente---\n1-Cadastrar Agendamento\n2-Listagem\n3-Voltar");
+            opcao = scan.nextInt();
+            switch(opcao) {
+                case 1:
+                    Create.cadastros(5);
+                    break;
+                case 2:
+                    exibirMensagem("---Menu Listagem---\n1-Listar Medicamento\n2-Listar Dispositivo\n3-Listar Monitoramento" +
+                            "\n4-Listar Alerta\n5- Voltar");
+                    opcaoMenu=scan.nextInt();
+                    if(opcaoMenu>0&&opcaoMenu<5){
+                        Read.listagem(opcaoMenu);
+                    }else if(opcaoMenu==5){
 
+                    }else{
+                        exibirMensagem("Opção inválida");
+                    }
+                    break;
+                case 3:
+                    exibirMensagem("Voltando.");
+                    break;
+                default:
+                    exibirMensagem("Opção inválida.");
+                    break;
+            }
         }
     }
-
 
     //Metodo para facilitar o sout
     public void exibirMensagem(String mensagem){

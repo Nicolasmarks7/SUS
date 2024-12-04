@@ -27,16 +27,17 @@ public class ControllerMain {
                     login = menu.menuLogin(); //Array esta recebendo o nome e email de login
                     List<Medico> medicoList = ControllerMedico.retornaLista();
                     for(Medico medico: medicoList){
-                        if(medico.getNome().equals(login.get(0)) && medico.getEmail().equals(login.get(1))){
-                            menu.exibirMensagem(medico.getNome() + " " + medico.getEmail());
+                        if(medico.getNome().equals(login.get(0)) && medico.getEmail().equals(login.get(1))) {
                             checkMedico = true;
+                            break;
                         }
                     }
                     if(!checkMedico){
                         List<Paciente> pacienteList = ControllerPaciente.retornaLista();
                         for (Paciente paciente:pacienteList){
-                            if(paciente.getNome().equals(login.get(0)) && paciente.getEmail().equals(login.get(1))){
+                            if(paciente.getNome().equals(login.get(0)) && paciente.getEmail().equals(login.get(1))) {
                                 checkPaciente = true;
+                                break;
                             }
                         }
                     }
