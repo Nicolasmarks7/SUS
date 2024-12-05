@@ -12,7 +12,7 @@ public class Menu {
     //Menu inicial
     public int menuInicial(){
         do{
-            exibirMensagem("1- Login\n2- Registrar\n3- Sair\nDigite a opcão desejada:");
+            exibirMensagem("---Menu Médico---\n1- Login\n2- Registrar\n3- Sair\nDigite a opcão desejada:");
             opcao = scan.nextInt();
             switch(opcao){
                 case 1,2:

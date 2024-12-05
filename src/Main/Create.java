@@ -20,7 +20,7 @@ public class Create {
             if(!nome.isEmpty()){
                 paciente.setNome(nome);
             }else{
-                menu.exibirMensagem("Nome não pode ser vazio.");
+                menu.exibirMensagem("O Nome não pode ser vazio.");
             }
         }while(nome.isEmpty());
 
@@ -30,17 +30,17 @@ public class Create {
             if(cpf.length()==11){
                 paciente.setCpf(cpf);
             }else{
-                menu.exibirMensagem("CPF precisa ter 11 dígitos.");
+                menu.exibirMensagem("O CPF precisa ter 11 dígitos.");
             }
         }while(cpf.length()!=11);
 
         do{
-            menu.exibirMensagem("Digite o email: ");
+            menu.exibirMensagem("Digite o e-mail: ");
             email = scan.nextLine();
             if(!email.isEmpty()){
                 paciente.setEmail(email);
             }else{
-                menu.exibirMensagem("E-mail não pode ser vazio.");
+                menu.exibirMensagem("O E-mail não pode ser vazio.");
             }
         }while(email.isEmpty());
 
@@ -50,7 +50,7 @@ public class Create {
             if(!data.isEmpty()){
                 paciente.setDataNasc(data);
             }else{
-                menu.exibirMensagem("Data não pode ser vazio.");
+                menu.exibirMensagem("A Data não pode ser vazio.");
             }
         }while(data.isEmpty());
 
@@ -60,7 +60,7 @@ public class Create {
             if(!endereco.isEmpty()){
                 paciente.setEndereco(endereco);
             }else{
-                menu.exibirMensagem("Endereço não pode ser vazio.");
+                menu.exibirMensagem("O Endereço não pode ser vazio.");
             }
         }while(endereco.isEmpty());
 
@@ -70,7 +70,7 @@ public class Create {
             if(!historico.isEmpty()){
                 paciente.setHistorico(historico);
             }else{
-                menu.exibirMensagem("Histórico não pode ser vazio.");
+                menu.exibirMensagem("O Histórico não pode ser vazio.");
             }
         }while(historico.isEmpty());
 
@@ -80,7 +80,7 @@ public class Create {
             if(telefone.length()==9){
                 paciente.setTelefone(Integer.parseInt(telefone));
             }else{
-                menu.exibirMensagem("Telefone precisa ter 9 dígitos.");
+                menu.exibirMensagem("O Telefone precisa ter 9 dígitos.");
             }
 
         }while(telefone.length()!=9);
@@ -90,57 +90,188 @@ public class Create {
 
     public Medico criarMedico(Medico medico){
 
-        menu.exibirMensagem("Digite o nome: ");
-        medico.setNome(scan.nextLine());
-        menu.exibirMensagem("Digite o email: ");
-        medico.setEmail(scan.nextLine());
-        menu.exibirMensagem("Digite a especialidade: ");
-        medico.setEspecialidade(scan.nextLine());
-        menu.exibirMensagem("Digite o CRM: ");
-        medico.setCRM(scan.nextInt());
-        menu.exibirMensagem("Digite o telefone: ");
-        medico.setTelefone(scan.nextInt());
+        String nome,especialidade,CRM,email,telefone;
+
+        do{
+            menu.exibirMensagem("Digite o nome: ");
+            nome = scan.nextLine();
+            if(!nome.isEmpty()){
+                medico.setNome(nome);
+            }else{
+                menu.exibirMensagem("O Nome não pode ser vazio.");
+            }
+        }while(nome.isEmpty());
+
+        do {
+            menu.exibirMensagem("Digite o e-mail: ");
+            email = scan.nextLine();
+            if(!email.isEmpty()){
+                medico.setEmail(email);
+            }else{
+                menu.exibirMensagem("O E-mail não pode ser vazio.");
+            }
+        }while(email.isEmpty());
+
+        do {
+            menu.exibirMensagem("Digite a especialidade: ");
+            especialidade = scan.nextLine();
+            if(!especialidade.isEmpty()){
+                medico.setEspecialidade(especialidade);
+            }else{
+                menu.exibirMensagem("A Especialidade não pode ser vazio.");
+            }
+        }while(especialidade.isEmpty());
+
+        do {
+            menu.exibirMensagem("Digite o número do CRM: ");
+            CRM = scan.nextLine();
+            if(CRM.length()==6){
+                medico.setCRM(Integer.parseInt(CRM));
+            }else{
+                menu.exibirMensagem("O CRM precisa ter 6 dígitos.");
+            }
+        }while(CRM.length()!=6);
+
+        do {
+            menu.exibirMensagem("Digite o telefone: ");
+            telefone = scan.nextLine();
+            if(telefone.length()==9){
+                medico.setTelefone(Integer.parseInt(telefone));
+            }else{
+                menu.exibirMensagem("O Telefone precisa ter 9 dígitos.");
+            }
+        }while(telefone.length()!=9);
 
         return medico;
     }
 
     public Medicamento criarMedicamento(Medicamento medicamento){
 
-        menu.exibirMensagem("Digite o nome: ");
-        medicamento.setNome(scan.nextLine());
-        menu.exibirMensagem("Digite a dosagem: ");
-        medicamento.setDosagem(scan.nextInt());
-        scan.nextLine();
-        menu.exibirMensagem("Digite a frequência em horas: ");
-        medicamento.setFrequencia(scan.nextInt());
-        scan.nextLine();
-        menu.exibirMensagem("Digite a descrição: ");
-        medicamento.setDescricao(scan.nextLine());
-        menu.exibirMensagem("Digite a data de vencimento no formato dd/mm/aaaa: ");
-        medicamento.setDataVenc(scan.nextLine());
-        menu.exibirMensagem("Digite a prescrição: ");
-        medicamento.setPrescricao(scan.nextLine());
+        String nome, dosagem, frequencia, descricao, dataVenc, prescricao;
+
+        do {
+            menu.exibirMensagem("Digite o nome: ");
+            nome = scan.nextLine();
+            if(!nome.isEmpty()){
+                medicamento.setNome(nome);
+            }else{
+                menu.exibirMensagem("O Nome não pode ser vazio.");
+            }
+        }while(nome.isEmpty());
+
+        do {
+            menu.exibirMensagem("Digite a dosagem: ");
+            dosagem = scan.nextLine();
+            if(!dosagem.isEmpty()){
+                medicamento.setDosagem(Integer.parseInt(dosagem));
+            }else{
+                menu.exibirMensagem("A Dosagem não pode ser vazio.");
+            }
+        }while(dosagem.isEmpty());
+
+        do {
+            menu.exibirMensagem("Digite a frequência em horas: ");
+            frequencia = scan.nextLine();
+            if(!frequencia.isEmpty()){
+                medicamento.setFrequencia(Integer.parseInt(frequencia));
+            }else{
+                menu.exibirMensagem("A Frequência não pode ser vazio.");
+            }
+        }while(frequencia.isEmpty());
+
+        do {
+            menu.exibirMensagem("Digite a descrição: ");
+            descricao = scan.nextLine();
+            if(!descricao.isEmpty()){
+                medicamento.setDescricao(descricao);
+            }else{
+                menu.exibirMensagem("A Descrição não pode ser vazio.");
+            }
+        }while(descricao.isEmpty());
+
+        do {
+            menu.exibirMensagem("Digite a data de vencimento no formato dd/mm/aaaa: ");
+            dataVenc = scan.nextLine();
+            if(!dataVenc.isEmpty()){
+                medicamento.setDataVenc(dataVenc);
+            }else{
+                menu.exibirMensagem("A Data de vencimento não pode ser vazio.");
+            }
+        }while(dataVenc.isEmpty());
+
+        do {
+            menu.exibirMensagem("Digite a prescrição: ");
+            prescricao = scan.nextLine();
+            if(!prescricao.isEmpty()){
+                medicamento.setPrescricao(prescricao);
+            }else{
+                menu.exibirMensagem("A Prescrição não pode ser vazio.");
+            }
+        }while(prescricao.isEmpty());
 
         return medicamento;
     }
 
     public Dispositivo criarDispositivo(Dispositivo dispositivo){
 
-        menu.exibirMensagem("Digite o tipo: ");
-        dispositivo.setTipo(scan.nextLine());
-        menu.exibirMensagem("Digite a marca: ");
-        dispositivo.setMarca(scan.nextLine());
-        menu.exibirMensagem("Digite o modelo: ");
-        dispositivo.setModelo(scan.nextLine());
-        menu.exibirMensagem("Digite o status: ");
-        dispositivo.setStatus(scan.nextLine());
-        menu.exibirMensagem("Digite o valor: ");
-        dispositivo.setValor(scan.nextInt());
+        String tipo, marca, modelo, status, valor;
+
+        do {
+            menu.exibirMensagem("Digite o tipo: ");
+            tipo = scan.nextLine();
+            if(!tipo.isEmpty()){
+                dispositivo.setTipo(tipo);
+            }else{
+                menu.exibirMensagem("O Tipo não pode ser vazio.");
+            }
+        }while(tipo.isEmpty());
+
+        do {
+            menu.exibirMensagem("Digite a marca: ");
+            marca = scan.nextLine();
+            if(!marca.isEmpty()){
+                dispositivo.setMarca(marca);
+            }else{
+                menu.exibirMensagem("A Marca não pode ser vazio.");
+            }
+        }while(marca.isEmpty());
+
+        do {
+            menu.exibirMensagem("Digite o modelo: ");
+            modelo = scan.nextLine();
+            if(!modelo.isEmpty()){
+                dispositivo.setModelo(modelo);
+            }else{
+                menu.exibirMensagem("O Modelo não pode ser vazio.");
+            }
+        }while(modelo.isEmpty());
+
+        do {
+            menu.exibirMensagem("Digite o status: ");
+            status = scan.nextLine();
+            if(!status.isEmpty()){
+                dispositivo.setStatus(status);
+            }else{
+                menu.exibirMensagem("O Status não pode ser vazio.");
+            }
+        }while(status.isEmpty());
+
+        do {
+            menu.exibirMensagem("Digite o valor: ");
+            valor = scan.nextLine();
+            if(!valor.isEmpty()){
+                dispositivo.setValor(Integer.parseInt(valor));
+            }else{
+                menu.exibirMensagem("O Valor não pode ser vazio.");
+            }
+        }while(valor.isEmpty());
 
         return dispositivo;
     }
 
     public Monitoramento criarMonitoramento(Monitoramento monitoramento){
+
+        String dados;
 
         int tentativas = 0;
         int tentativas2 = 0;
@@ -179,21 +310,45 @@ public class Create {
             return null;
         }
 
-        menu.exibirMensagem("Digite os dados: ");
-        monitoramento.setDados(scan.nextLine());
+        do{
+            menu.exibirMensagem("Digite os dados: ");
+            dados = scan.nextLine();
+            if(!dados.isEmpty()){
+                monitoramento.setDados(dados);
+            }else{
+                menu.exibirMensagem("O Monitoramento deve conter dados.");
+            }
+        }while(dados.isEmpty());
 
         return monitoramento;
     }
 
     public Alerta criarAlerta(Alerta alerta){
 
+        String tipo, mensagem, data;
+
         int tentativas = 0;
         int tentativas2 = 0;
 
-        menu.exibirMensagem("Digite o tipo: ");
-        alerta.setTipo(scan.nextLine());
-        menu.exibirMensagem("Digite a mensagem: ");
-        alerta.setMensagem(scan.nextLine());
+        do {
+            menu.exibirMensagem("Digite o tipo: ");
+            tipo = scan.nextLine();
+            if(!tipo.isEmpty()){
+                alerta.setTipo(tipo);
+            }else{
+                menu.exibirMensagem("O Tipo não pode ser vazio.");
+            }
+        }while(tipo.isEmpty());
+
+        do {
+            menu.exibirMensagem("Digite a mensagem: ");
+            mensagem = scan.nextLine();
+            if(!mensagem.isEmpty()){
+                alerta.setMensagem(mensagem);
+            }else{
+                menu.exibirMensagem("A Mensagem não pode ser vazio.");
+            }
+        }while(mensagem.isEmpty());
 
         do{
             menu.exibirMensagem("Digite o CPF do paciente: ");
@@ -229,22 +384,47 @@ public class Create {
             return null;
         }
 
-        menu.exibirMensagem("Digite a data no formato dd/mm/aaaa: ");
-        alerta.setData(scan.nextLine());
+        do {
+            menu.exibirMensagem("Digite a data no formato dd/mm/aaaa: ");
+            data = scan.nextLine();
+            if(!data.isEmpty()){
+                alerta.setData(data);
+            }else{
+                menu.exibirMensagem("A Data não pode ser vazio.");
+            }
+        }while(data.isEmpty());
 
         return alerta;
     }
 
     public Agendamento criarAgendamento(Agendamento agendamento){
 
+        String data, hora, diagnostico;
+
         int tentativas = 0;
         int tentativas2 = 0;
         int tentativas3 = 0;
 
-        menu.exibirMensagem("Digite a data no formato dd/mm/aaaa: ");
-        agendamento.setData(scan.nextLine());
-        menu.exibirMensagem("Digite a hora: ");
-        agendamento.setHora(scan.nextLine());
+        do{
+            menu.exibirMensagem("Digite a data no formato dd/mm/aaaa: ");
+            data = scan.nextLine();
+            if(!data.isEmpty()){
+                agendamento.setData(data);
+            }else{
+                menu.exibirMensagem("A Data não pode ser vazio.");
+            }
+        }while(data.isEmpty());
+
+        do{
+            menu.exibirMensagem("Digite a hora: ");
+            hora = scan.nextLine();
+            if(!hora.isEmpty()){
+                agendamento.setHora(hora);
+            }else{
+                menu.exibirMensagem("A hora não pode ser vazio.");
+            }
+        }while(hora.isEmpty());
+
 
         do{
             menu.exibirMensagem("Digite o CPF do paciente: ");
@@ -280,9 +460,15 @@ public class Create {
             return null;
         }
 
-
-        menu.exibirMensagem("Digite o diagnóstico: ");
-        agendamento.setDiagnostico(scan.nextLine());
+        do{
+            menu.exibirMensagem("Digite o diagnóstico: ");
+            diagnostico = scan.nextLine();
+            if(!diagnostico.isEmpty()){
+                agendamento.setDiagnostico(diagnostico);
+            }else{
+                menu.exibirMensagem("O Diagnóstico não pode ser vazio.");
+            }
+        }while(diagnostico.isEmpty());
 
         do{
             menu.exibirMensagem("Digite o nome do medicamento: ");
