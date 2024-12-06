@@ -12,8 +12,9 @@ public class Menu {
     //Menu inicial
     public int menuInicial(){
         do{
-            exibirMensagem("---Menu Médico---\n1- Login\n2- Registrar\n3- Sair\nDigite a opcão desejada:");
+            exibirMensagem("---Menu Inicial---\n1- Login\n2- Registrar\n3- Sair\nDigite a opcão desejada:");
             opcao = scan.nextInt();
+            scan.nextLine();
             switch(opcao){
                 case 1,2:
                     return opcao;
@@ -48,16 +49,28 @@ public class Menu {
 
     public ArrayList<String> menuLogin(){
         login.clear();
-        String nome = "";
-        String email = "";
-        while(nome==null || email==null || nome.isEmpty() || email.isEmpty()){
-            exibirMensagem("Digite o nome:");
-            nome = scan.next();
-            login.add(nome);
-            exibirMensagem("Digite o email:");
-            email = scan.next();
-            login.add(email);
-        }
+        String nome,email;
+
+            do{
+                exibirMensagem("Digite o nome: ");
+                nome = scan.nextLine();
+                if(!nome.isEmpty()){
+                login.add(nome);
+                }else{
+                    exibirMensagem("O Nome não pode ser vazio.");
+                }
+            }while(nome.isEmpty());
+
+            do{
+                exibirMensagem("Digite o email: ");
+                email = scan.nextLine();
+                if(!email.isEmpty()){
+                    login.add(email);
+                }else{
+                exibirMensagem("O E-mail não pode ser vazio.");
+                }
+            }while(email.isEmpty());
+
         return login;
     }
 
@@ -70,11 +83,11 @@ public class Menu {
                 switch(opcao){
                     case 1:
                         exibirMensagem("---Menu Cadastro---\n1-Cadastrar Medicamento\n2-Cadastrar Dispositivo\n3-Cadastrar Monitoramento" +
-                                "\n4-Cadastrar Alerta\n5- Voltar");
+                                "\n4-Cadastrar Alerta\n5-Criar prescrição\n6- Voltar");
                         opcaoMenu=scan.nextInt();
-                        if(opcaoMenu>0&&opcaoMenu<5){
+                        if(opcaoMenu>0&&opcaoMenu<6){
                             Create.cadastros(opcaoMenu);
-                        }else if(opcaoMenu==5){
+                        }else if(opcaoMenu==6){
 
                         }else{
                             exibirMensagem("Opção inválida");
@@ -82,11 +95,11 @@ public class Menu {
                         break;
                     case 2:
                         exibirMensagem("---Menu Listagem---\n1-Listar Agendamentos\n2-Listar Medicamento\n3-Listar Dispositivo" +
-                                "\n4-Listar Monitoramento\n5- Listar Alerta\n6-Voltar.");
+                                "\n4-Listar Monitoramento\n5-Listar Alerta\n6-Listar Pacientes.\n7-Voltar");
                         opcaoMenu=scan.nextInt();
-                        if(opcaoMenu>0&&opcaoMenu<6){
+                        if(opcaoMenu>0&&opcaoMenu<7){
                             Read.listagem(opcaoMenu);
-                        }else if(opcaoMenu==6){
+                        }else if(opcaoMenu==7){
 
                         }else{
                             exibirMensagem("Opção inválida");
@@ -104,12 +117,12 @@ public class Menu {
                         }
                         break;
                     case 4:
-                        exibirMensagem("---Menu Exclusão---\n1-Excluir Medicamento\n2-Excluir Dispositivo\n3-Excluir Monitoramento" +
-                                "\n4-Excluir Alerta\n5- Voltar");
+                        exibirMensagem("---Menu Exclusão---\n1-Remover Prescrição \n2-Excluir Dispositivo\n3-Excluir Alerta" +
+                                "\n4-Voltar");
                         opcaoMenu=scan.nextInt();
-                        if(opcaoMenu>0&&opcaoMenu<5){
+                        if(opcaoMenu>0&&opcaoMenu<4){
                             Remove.exclusao(opcaoMenu);
-                        }else if(opcaoMenu==5){
+                        }else if(opcaoMenu==4){
 
                         }else{
                             exibirMensagem("Opção inválida");
@@ -124,31 +137,33 @@ public class Menu {
                 }
             }while(opcao!=5);
         }else{
-            exibirMensagem("---Menu Paciente---\n1-Cadastrar Agendamento\n2-Listagem\n3-Voltar");
-            opcao = scan.nextInt();
-            switch(opcao) {
-                case 1:
-                    Create.cadastros(5);
-                    break;
-                case 2:
-                    exibirMensagem("---Menu Listagem---\n1-Listar Agendamentos\n2-Listar Medicamento\n3-Listar Dispositivo" +
-                            "\n4-Listar Monitoramento\n5- Listar Alerta\n6-Voltar.");
-                    opcaoMenu=scan.nextInt();
-                    if(opcaoMenu>0&&opcaoMenu<6){
-                        Read.listagem(opcaoMenu);
-                    }else if(opcaoMenu==6){
+            do {
+                exibirMensagem("---Menu Paciente---\n1-Cadastrar Agendamento\n2-Listagem\n3-Voltar");
+                opcao = scan.nextInt();
+                switch (opcao) {
+                    case 1:
+                        Create.cadastros(6);
+                        break;
+                    case 2:
+                        exibirMensagem("---Menu Listagem---\n1-Listar Agendamentos\n2-Listar Medicamento\n3-Listar Dispositivo" +
+                                "\n4-Listar Monitoramento\n5- Listar Alerta\n6-Voltar.");
+                        opcaoMenu = scan.nextInt();
+                        if (opcaoMenu > 0 && opcaoMenu < 6) {
+                            Read.listagem(opcaoMenu);
+                        } else if (opcaoMenu == 6) {
 
-                    }else{
-                        exibirMensagem("Opção inválida");
-                    }
-                    break;
-                case 3:
-                    exibirMensagem("Voltando.");
-                    break;
-                default:
-                    exibirMensagem("Opção inválida.");
-                    break;
-            }
+                        } else {
+                            exibirMensagem("Opção inválida");
+                        }
+                        break;
+                    case 3:
+                        exibirMensagem("Voltando.");
+                        break;
+                    default:
+                        exibirMensagem("Opção inválida.");
+                        break;
+                }
+            }while(opcao!=3);
         }
     }
 

@@ -1,6 +1,7 @@
 package Controller;
 
 import Main.Create;
+import Main.Remove;
 import Model.Dispositivo;
 import Model.Medico;
 import View.ViewMain;

@@ -10,6 +10,31 @@ public class Create {
     Menu menu = new Menu();
     Scanner scan = new Scanner(System.in);
 
+    public void criarPrescricao(){
+
+        String cpf;
+
+        do{
+            menu.exibirMensagem("Digitge o cpf do paciente que criar a prescrição: ");
+            cpf = scan.nextLine();
+            if(cpf.length()!=11)menu.exibirMensagem("Digite um cpf válido.");
+        }while(cpf.length()!=11);
+
+        Paciente paciente = Read.procuraPaciente(cpf);
+
+        if(paciente!=null){
+            menu.exibirMensagem("Paciente encontrado.");
+            Medicamento medicamento = new Medicamento();
+            criarMedicamento(medicamento);
+            ControllerPaciente.criaPrescricao(paciente,medicamento);
+        }else{
+            menu.exibirMensagem("Paciente não encontrado com este cpf.");
+        }
+
+
+
+    }
+
     public Paciente criarPaciente(Paciente paciente){
 
         String nome,cpf,email,data,endereco,historico,telefone;
@@ -85,6 +110,7 @@ public class Create {
 
         }while(telefone.length()!=9);
 
+        menu.exibirMensagem("Paciente criado com sucesso.");
         return paciente;
     }
 
@@ -142,6 +168,7 @@ public class Create {
             }
         }while(telefone.length()!=9);
 
+        menu.exibirMensagem("Médico criado com sucesso.");
         return medico;
     }
 
@@ -150,7 +177,7 @@ public class Create {
         String nome, dosagem, frequencia, descricao, dataVenc, prescricao;
 
         do {
-            menu.exibirMensagem("Digite o nome: ");
+            menu.exibirMensagem("Digite o nome do medicamento: ");
             nome = scan.nextLine();
             if(!nome.isEmpty()){
                 medicamento.setNome(nome);
@@ -209,6 +236,7 @@ public class Create {
             }
         }while(prescricao.isEmpty());
 
+        menu.exibirMensagem("Medicamento criado com sucesso.");
         return medicamento;
     }
 
@@ -266,6 +294,7 @@ public class Create {
             }
         }while(valor.isEmpty());
 
+        menu.exibirMensagem("Dispositivo criado com sucesso.");
         return dispositivo;
     }
 
@@ -320,6 +349,7 @@ public class Create {
             }
         }while(dados.isEmpty());
 
+        menu.exibirMensagem("Monitoramento criado com sucesso.");
         return monitoramento;
     }
 
@@ -394,6 +424,7 @@ public class Create {
             }
         }while(data.isEmpty());
 
+        menu.exibirMensagem("Alerta criado com sucesso.");
         return alerta;
     }
 
@@ -446,6 +477,7 @@ public class Create {
         do{
             menu.exibirMensagem("Digite o CRM do médico: ");
             Medico medico = Read.procuraMedico(scan.nextInt());
+            scan.nextLine();
             if(medico!=null){
                 agendamento.setMedico(medico);
                 break;
@@ -487,6 +519,7 @@ public class Create {
             return null;
         }
 
+        menu.exibirMensagem("Agendamento criado com sucesso.");
         return agendamento;
     }
 
@@ -513,6 +546,10 @@ public class Create {
                 controllerAlerta.createAlerta(alerta);
                 break;
             case 5:
+                Create create = new Create();
+                create.criarPrescricao();
+                break;
+            case 6:
                 Agendamento agendamento = new Agendamento();
                 ControllerAgendamento controllerAgendamento = new ControllerAgendamento();
                 controllerAgendamento.createAgendamento(agendamento);

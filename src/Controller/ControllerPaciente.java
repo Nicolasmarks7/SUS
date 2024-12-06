@@ -1,7 +1,7 @@
 package Controller;
 
 import Main.Create;
-import Model.Medico;
+import Model.Medicamento;
 import Model.Paciente;
 import View.ViewMain;
 
@@ -22,6 +22,17 @@ public class ControllerPaciente {
 
     }
 
+    public static void criaPrescricao(Paciente paciente, Medicamento medicamento){
+
+        for(Paciente p:pacienteList){
+            if(p.getCpf().equals(paciente.getCpf())){
+                paciente.setMedicamento(medicamento);
+                pacienteList.remove(p);
+                pacienteList.add(paciente);
+            }
+        }
+    }
+
     public static void readPacientes(){
         ViewMain.viewPacientes(pacienteList);
     }
@@ -33,6 +44,19 @@ public class ControllerPaciente {
     //Remove um paciente
     public static void removePaciente (Paciente paciente) {
         pacienteList.remove(paciente);
+    }
+
+    public static void removePrescricao(Paciente paciente){
+
+        for(Paciente p:pacienteList){
+            if(p.getCpf().equals(paciente.getCpf())){
+                Medicamento novoMedicamento = new Medicamento();
+                paciente.setMedicamento(novoMedicamento);
+                pacienteList.remove(p);
+                pacienteList.add(paciente);
+            }
+        }
+
     }
 
     public static boolean checaExistente(ArrayList<String> login){

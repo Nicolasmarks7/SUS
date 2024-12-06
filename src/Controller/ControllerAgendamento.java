@@ -14,7 +14,7 @@ public class ControllerAgendamento {
 
     //Adiciona um agendamento
     public void createAgendamento (Agendamento agendamento){
-        agendamentoList.add(create.criarAgendamento(agendamento));
+        if(create.criarAgendamento(agendamento)!=null)agendamentoList.add(agendamento);
     }
     //Visualiza/Busca um Agendamento
     public static void readAgendamento (Agendamento agendamento){

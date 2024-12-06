@@ -15,7 +15,7 @@ public class ControllerMonitoramento {
 
     //Adiciona um Monitoramento
     public void createMonitoramento (Monitoramento monitoramento){
-        monitoramentoList.add(create.criarMonitoramento(monitoramento));
+        if(create.criarMonitoramento(monitoramento)!=null)monitoramentoList.add(monitoramento);
     }
     //Visualiza/Busca um Monitoramento
     public static void readMonitoramento (Monitoramento monitoramento){

@@ -120,13 +120,37 @@ public class ViewMain {
 
         if(!pacientes.isEmpty()){
             int cont=1;
+            String medicamento = null;
+            String dispositivo = null;
             menu.exibirMensagem("---Pacientes---");
             for(Paciente paciente:pacientes){
+
+                try{
+                    if(paciente.getMedicamento().getNome()!=null){
+                        medicamento = paciente.getMedicamento().getNome();
+                    }else{
+                        medicamento = "Nenhum medicamento registrado.";
+                    }
+                }catch(NullPointerException e){
+                    medicamento = "Nenhum medicamento registrado.";
+                }
+
+                try{
+                    if(paciente.getDispositivo().getTipo()!=null){
+                        dispositivo = paciente.getDispositivo().getTipo();
+                    }else{
+                        dispositivo = "Nenhum dispositivo registrado.";
+                    }
+                }catch(NullPointerException e){
+                    dispositivo = "Nenhum dispositivo registrado.";
+                }
+
+
                 menu.exibirMensagem("Paciente: " + cont + "\nNome: " + paciente.getNome() +
                         "\nCPF: " + paciente.getCpf() + "\nData de nascimento: " + paciente.getDataNasc() +
                         "\nEndereço: " + paciente.getEndereco() + "\nTelefone: " + paciente.getTelefone() +
                         "\nE-mail: " + paciente.getEmail() + "\nHistórico hospitalar: " + paciente.getHistorico() +
-                        "\nMedicamento: " + paciente.getMedicamento().getNome() + "\nDispositivo: " + paciente.getDispositivo().getTipo());
+                        "\nMedicamento: " + medicamento  + "\nDispositivo: " + dispositivo);
                 cont++;
             }
         }else{
