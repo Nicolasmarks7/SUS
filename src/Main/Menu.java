@@ -64,6 +64,7 @@ public class Menu {
         login.clear();
         String nome,email;
 
+        exibirMensagem("---Faça seu login---");
             do{
                 exibirMensagem("Digite o nome: ");
                 nome = scan.nextLine();

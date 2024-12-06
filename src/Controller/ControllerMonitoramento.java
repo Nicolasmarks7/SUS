@@ -14,8 +14,11 @@ public class ControllerMonitoramento {
 
     //Adiciona um Monitoramento
     public void createMonitoramento (Monitoramento monitoramento){
-        if(create.criarMonitoramento(monitoramento)!=null)monitoramentoList.add(monitoramento);
-        ControllerPaciente.addDispositivo(monitoramento);
+        if(create.criarMonitoramento(monitoramento)!=null){
+            monitoramentoList.add(monitoramento);
+            ControllerPaciente.addDispositivo(monitoramento);
+        }
+
     }
     //Visualiza/Busca um Monitoramento
     public static void readMonitoramento (Monitoramento monitoramento){
@@ -31,8 +34,7 @@ public class ControllerMonitoramento {
 
     }
     //Remove um Monitoramento
-    public static void removeMonitoramento (Monitoramento monitoramento) {
-        monitoramentoList.remove(monitoramento);
+    public static void removeMonitoramento (String cpf) {
+        monitoramentoList.removeIf(monitoramento -> monitoramento.getPaciente().getCpf().equals(cpf));
     }
 }
-

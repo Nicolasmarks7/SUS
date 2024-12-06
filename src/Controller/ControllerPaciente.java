@@ -14,7 +14,7 @@ public class ControllerPaciente {
 
     //Adiciona um paciente
     public void createPaciente (Paciente paciente){
-        pacienteList.add(create.criarPaciente(paciente));
+        if(create.criarPaciente(paciente) != null)pacienteList.add(paciente);
     }
     //Visualiza/Busca um paciente
     public static void readPaciente (Paciente paciente){
@@ -80,6 +80,7 @@ public class ControllerPaciente {
 
         for(Paciente paciente:pacienteList){
             if(paciente.getCpf().equals(cpf)){
+                ControllerMonitoramento.removeMonitoramento(cpf);
                 Dispositivo novoDispositivo = new Dispositivo();
                 paciente.setDispositivo(novoDispositivo);
             }
@@ -87,10 +88,13 @@ public class ControllerPaciente {
 
     }
 
-    public static boolean checaExistente(ArrayList<String> login){
-        boolean check = false;
+    public static boolean checaExistente(String cpf){
 
-        return check;
+        for(Paciente paciente:pacienteList){
+            if(paciente.getCpf().equals(cpf))return true;
+        }
+
+        return false;
     }
 
     public static List<Paciente> retornaLista(){

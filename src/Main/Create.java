@@ -53,11 +53,20 @@ public class Create {
             menu.exibirMensagem("Digite o cpf: ");
             cpf = scan.nextLine();
             if(cpf.length()==11){
-                paciente.setCpf(cpf);
+                if(!ControllerPaciente.checaExistente(cpf)){
+                    paciente.setCpf(cpf);
+                }else{
+                 menu.exibirMensagem("CPF já cadastrado.");
+                }
             }else{
                 menu.exibirMensagem("O CPF precisa ter 11 dígitos.");
             }
         }while(cpf.length()!=11);
+
+        if(paciente.getCpf() == null){
+            menu.exibirMensagem("Não foi possível cadastrar o paciente.");
+            return null;
+        }
 
         do{
             menu.exibirMensagem("Digite o e-mail: ");
