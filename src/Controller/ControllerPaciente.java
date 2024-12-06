@@ -1,8 +1,7 @@
 package Controller;
 
 import Main.Create;
-import Model.Medicamento;
-import Model.Paciente;
+import Model.*;
 import View.ViewMain;
 
 import java.util.ArrayList;
@@ -57,6 +56,16 @@ public class ControllerPaciente {
             }
         }
 
+    }
+
+    public static void addDispositivo(Monitoramento monitoramento){
+        Dispositivo dispositivo = monitoramento.getDispositivo();
+        Paciente paciente = monitoramento.getPaciente();
+        for(Paciente p:pacienteList){
+            if(p.getCpf().equals(paciente.getCpf())){
+                p.setDispositivo(dispositivo);
+            }
+        }
     }
 
     public static boolean checaExistente(ArrayList<String> login){
