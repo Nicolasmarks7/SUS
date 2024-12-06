@@ -2,9 +2,8 @@ package Controller;
 
 import Main.Create;
 import Model.Monitoramento;
-import View.ViewMain;
+import View.View;
 
-import javax.swing.text.View;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +23,7 @@ public class ControllerMonitoramento {
     }
 
     public static void readMonitoramentos(){
-        ViewMain.viewMonitoramentos(monitoramentoList);
+        View.viewMonitoramentos(monitoramentoList);
     }
 
     //Atualiza um Monitoramento

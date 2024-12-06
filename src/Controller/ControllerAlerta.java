@@ -3,8 +3,7 @@ package Controller;
 
 import Main.Create;
 import Model.Alerta;
-import Model.Dispositivo;
-import View.ViewMain;
+import View.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +23,7 @@ public class ControllerAlerta {
     }
 
     public static void readAlertas(){
-        ViewMain.viewAlertas(alertaList);
+        View.viewAlertas(alertaList);
     }
 
     //Atualiza um Alerta

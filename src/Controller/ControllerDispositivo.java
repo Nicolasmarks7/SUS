@@ -1,10 +1,8 @@
 package Controller;
 
 import Main.Create;
-import Main.Remove;
 import Model.Dispositivo;
-import Model.Medico;
-import View.ViewMain;
+import View.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,12 +17,17 @@ public class ControllerDispositivo {
         dispositivoList.add(create.criarDispositivo(dispositivo));
     }
     //Visualiza/Busca um Dispositivo
-    public static void readDispositivo (Dispositivo dispositivo){
+    public static Dispositivo readDispositivo (String tipo){
+
+        for(Dispositivo dispositivo:dispositivoList){
+            if(dispositivo.getTipo().equals(tipo))return dispositivo;
+        }
+        return null;
 
     }
 
     public static void readDispositivos(){
-        ViewMain.viewDispositivos(dispositivoList);
+        View.viewDispositivos(dispositivoList);
     }
 
     //Atualiza um Dispositivo

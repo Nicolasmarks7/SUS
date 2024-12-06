@@ -33,9 +33,22 @@ public class Menu {
         do{
             exibirMensagem("1-Cadastrar paciente\n2-Cadastrar médico\n3-Voltar\nDigite a opção desejada:");
             opcao=scan.nextInt();
+            scan.nextLine();
             switch(opcao){
-                case 1,2:
+                case 1:
                     return opcao;
+                case 2:
+                    exibirMensagem("Você precisa de permissão para registrar-se como médico.\nUsuario: ");
+                    String usuario = scan.nextLine();
+                    exibirMensagem("Senha: ");
+                    String senha = scan.nextLine();
+                    if(usuario.equals("admin") && senha.equals("admin")){
+                        exibirMensagem("Permissão concedida.");
+                        return opcao;
+                    }else{
+                        exibirMensagem("Autenticação falhou.");
+                        break;
+                    }
                 case 3:
                     exibirMensagem("-------------------");
                     break;
@@ -44,7 +57,7 @@ public class Menu {
                     break;
             }
         }while(opcao<1||opcao>3);
-        return opcao;
+        return 3;
     }
 
     public ArrayList<String> menuLogin(){
@@ -117,12 +130,12 @@ public class Menu {
                         }
                         break;
                     case 4:
-                        exibirMensagem("---Menu Exclusão---\n1-Remover Prescrição \n2-Excluir Dispositivo\n3-Excluir Alerta" +
-                                "\n4-Voltar");
+                        exibirMensagem("---Menu Exclusão---\n1-Remover Prescrição \n2-Remover dispositivo do paciente\n3-Excluir Dispositivo" +
+                                "\n4-Excluir Alerta\n5-Voltar");
                         opcaoMenu=scan.nextInt();
-                        if(opcaoMenu>0&&opcaoMenu<4){
+                        if(opcaoMenu>0&&opcaoMenu<5){
                             Remove.exclusao(opcaoMenu);
-                        }else if(opcaoMenu==4){
+                        }else if(opcaoMenu==5){
 
                         }else{
                             exibirMensagem("Opção inválida");

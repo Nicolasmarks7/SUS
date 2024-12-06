@@ -2,7 +2,7 @@ package Controller;
 
 import Main.Create;
 import Model.Medico;
-import View.ViewMain;
+import View.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,12 +17,15 @@ public class ControllerMedico {
         medicoList.add(create.criarMedico(medico));
     }
     //Visualiza/Busca um médico
-    public static void readMedico (Medico medico){
-
+    public static Medico readMedico (int crm){
+        for(Medico medico:medicoList){
+            if(medico.getCRM()==crm)return medico;
+        }
+        return null;
     }
 
     public static void readMedicos(){
-        ViewMain.viewMedicos(medicoList);
+        View.viewMedicos(medicoList);
     }
 
     //Atualiza um médico

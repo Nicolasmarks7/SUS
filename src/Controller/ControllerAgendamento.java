@@ -2,7 +2,7 @@ package Controller;
 
 import Main.Create;
 import Model.Agendamento;
-import View.ViewMain;
+import View.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,7 @@ public class ControllerAgendamento {
     }
 
     public static void readAgendamentos(){
-        ViewMain.viewAgendamentos(agendamentoList);
+        View.viewAgendamentos(agendamentoList);
     }
 
     //Atualiza um Agendamento

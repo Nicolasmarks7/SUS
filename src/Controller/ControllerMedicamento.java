@@ -2,8 +2,7 @@ package Controller;
 
 import Main.Create;
 import Model.Medicamento;
-import Model.Medico;
-import View.ViewMain;
+import View.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,12 +17,18 @@ public class ControllerMedicamento {
         medicamentoList.add(create.criarMedicamento(medicamento));
     }
     //Visualiza/Busca um Medicamento
-    public static void readMedicamento (Medicamento medicamento){
+    public static Medicamento readMedicamento (String nome){
+
+        for(Medicamento medicamento:medicamentoList){
+            if(medicamento.getNome().equals(nome)) return medicamento;
+        }
+
+        return null;
 
     }
 
     public static void readMedicamentos(){
-        ViewMain.viewMedicamentos(medicamentoList);
+        View.viewMedicamentos(medicamentoList);
     }
 
     //Atualiza um Medicamento

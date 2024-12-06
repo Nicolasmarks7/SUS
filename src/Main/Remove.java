@@ -35,6 +35,28 @@ public class Remove {
         return null;
     }
 
+    private String removerDispositivoPaciente() {
+
+        List<Paciente> pacienteList = ControllerPaciente.retornaLista();
+        String cpf;
+
+        do{
+            menu.exibirMensagem("Digitge o cpf do paciente que deseja remover a prescrição: ");
+            cpf = scan.nextLine();
+            if(cpf.length()!=11)menu.exibirMensagem("Digite um cpf válido.");
+        }while(cpf.length()!=11);
+
+        for(Paciente paciente:pacienteList){
+            if(paciente.getCpf().equals(cpf) && paciente.getDispositivo()!=null){
+                menu.exibirMensagem("Paciente com dispositivo encontrado, removendo dispositivo.");
+                return cpf;
+            }
+        }
+
+        menu.exibirMensagem("Paciente não encontrado ou sem dispositivo.");
+        return null;
+    }
+
     public Alerta removerAlerta(){
 
         List<Alerta> alertaList = ControllerAlerta.retornaLista();
@@ -62,7 +84,7 @@ public class Remove {
         return null;
     }
 
-    public Paciente removerPrescricao(){
+    public String removerPrescricao(){
 
 
         List<Paciente> pacienteList = ControllerPaciente.retornaLista();
@@ -77,7 +99,7 @@ public class Remove {
         for(Paciente paciente:pacienteList){
             if(paciente.getCpf().equals(cpf) && paciente.getMedicamento()!=null){
                 menu.exibirMensagem("Paciente com prescrição encontrado, removendo prescrição.");
-                return paciente;
+                return cpf;
             }
         }
 
@@ -88,17 +110,22 @@ public class Remove {
     public static void exclusao(int opcao){
 
         Remove remove = new Remove();
+        String cpf;
 
         switch(opcao){
             case 1:
-                Paciente paciente = remove.removerPrescricao();
-                ControllerPaciente.removePrescricao(paciente);
+                cpf = remove.removerPrescricao();
+                ControllerPaciente.removePrescricao(cpf);
                 break;
             case 2:
+                cpf = remove.removerDispositivoPaciente();
+                ControllerPaciente.removeDispositivo(cpf);
+                break;
+            case 3:
                 Dispositivo dispositivo = remove.removerDispositivo();
                 ControllerDispositivo.removeDispositivo(dispositivo);
                 break;
-            case 3:
+            case 4:
                 Alerta alerta = remove.removerAlerta();
                 ControllerAlerta.removeAlerta(alerta);
                 break;

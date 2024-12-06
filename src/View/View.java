@@ -4,11 +4,9 @@ import Main.Menu;
 import Model.*;
 
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
-public class ViewMain {
+public class View {
 
     private static Menu menu = new Menu();
 

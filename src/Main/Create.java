@@ -20,7 +20,7 @@ public class Create {
             if(cpf.length()!=11)menu.exibirMensagem("Digite um cpf válido.");
         }while(cpf.length()!=11);
 
-        Paciente paciente = Read.procuraPaciente(cpf);
+        Paciente paciente = ControllerPaciente.readPaciente(cpf);
 
         if(paciente!=null){
             menu.exibirMensagem("Paciente encontrado.");
@@ -110,7 +110,7 @@ public class Create {
 
         }while(telefone.length()!=9);
 
-        menu.exibirMensagem("Paciente criado com sucesso.");
+        menu.exibirMensagem("Paciente registrado com sucesso.");
         return paciente;
     }
 
@@ -168,7 +168,7 @@ public class Create {
             }
         }while(telefone.length()!=9);
 
-        menu.exibirMensagem("Médico criado com sucesso.");
+        menu.exibirMensagem("Médico registrado com sucesso.");
         return medico;
     }
 
@@ -236,7 +236,7 @@ public class Create {
             }
         }while(prescricao.isEmpty());
 
-        menu.exibirMensagem("Medicamento criado com sucesso.");
+        menu.exibirMensagem("Medicamento registrado com sucesso.");
         return medicamento;
     }
 
@@ -294,7 +294,7 @@ public class Create {
             }
         }while(valor.isEmpty());
 
-        menu.exibirMensagem("Dispositivo criado com sucesso.");
+        menu.exibirMensagem("Dispositivo registrado com sucesso.");
         return dispositivo;
     }
 
@@ -307,7 +307,7 @@ public class Create {
 
         do{
             menu.exibirMensagem("Digite o CPF do paciente: ");
-            Paciente paciente = Read.procuraPaciente(scan.nextLine());
+            Paciente paciente = ControllerPaciente.readPaciente(scan.nextLine());
             if(paciente!=null){
                 monitoramento.setPaciente(paciente);
                 break;
@@ -324,7 +324,7 @@ public class Create {
 
         do{
             menu.exibirMensagem("Digite o tipo do dispositivo: ");
-            Dispositivo dispositivo = Read.procuraDispositivo(scan.nextLine());
+            Dispositivo dispositivo = ControllerDispositivo.readDispositivo(scan.nextLine());
             if(dispositivo!=null){
                 monitoramento.setDispositivo(dispositivo);
                 break;
@@ -382,7 +382,7 @@ public class Create {
 
         do{
             menu.exibirMensagem("Digite o CPF do paciente: ");
-            Paciente paciente = Read.procuraPaciente(scan.nextLine());
+            Paciente paciente = ControllerPaciente.readPaciente(scan.nextLine());
             if(paciente!=null){
                 alerta.setPaciente(paciente);
                 break;
@@ -399,7 +399,8 @@ public class Create {
 
         do{
             menu.exibirMensagem("Digite o CRM do médico: ");
-            Medico medico = Read.procuraMedico(scan.nextInt());
+            Medico medico = ControllerMedico.readMedico(scan.nextInt());
+            scan.nextLine();
             if(medico!=null){
                 alerta.setMedico(medico);
                 break;
@@ -459,7 +460,7 @@ public class Create {
 
         do{
             menu.exibirMensagem("Digite o CPF do paciente: ");
-            Paciente paciente = Read.procuraPaciente(scan.nextLine());
+            Paciente paciente = ControllerPaciente.readPaciente(scan.nextLine());
             if(paciente!=null){
                 agendamento.setPaciente(paciente);
                 break;
@@ -476,7 +477,7 @@ public class Create {
 
         do{
             menu.exibirMensagem("Digite o CRM do médico: ");
-            Medico medico = Read.procuraMedico(scan.nextInt());
+            Medico medico = ControllerMedico.readMedico(scan.nextInt());
             scan.nextLine();
             if(medico!=null){
                 agendamento.setMedico(medico);
@@ -504,7 +505,7 @@ public class Create {
 
         do{
             menu.exibirMensagem("Digite o nome do medicamento: ");
-            Medicamento medicamento = Read.procuraMedicamento(scan.nextLine());
+            Medicamento medicamento = ControllerMedicamento.readMedicamento(scan.nextLine());
             if(medicamento!=null){
                 agendamento.setMedicamento(medicamento);
                 break;

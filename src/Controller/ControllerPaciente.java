@@ -2,7 +2,7 @@ package Controller;
 
 import Main.Create;
 import Model.*;
-import View.ViewMain;
+import View.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,8 +32,17 @@ public class ControllerPaciente {
         }
     }
 
+    //Visualiza/Busca um Paciente
+    public static Paciente readPaciente(String cpf){
+        for(Paciente paciente:pacienteList){
+            if(paciente.getCpf().equals(cpf))return paciente;
+        }
+
+        return null;
+    }
+
     public static void readPacientes(){
-        ViewMain.viewPacientes(pacienteList);
+        View.viewPacientes(pacienteList);
     }
 
     //Atualiza um paciente
@@ -45,14 +54,13 @@ public class ControllerPaciente {
         pacienteList.remove(paciente);
     }
 
-    public static void removePrescricao(Paciente paciente){
+    public static void removePrescricao(String cpf){
 
-        for(Paciente p:pacienteList){
-            if(p.getCpf().equals(paciente.getCpf())){
+        for(Paciente paciente:pacienteList){
+            if(paciente.getCpf().equals(cpf)){
                 Medicamento novoMedicamento = new Medicamento();
                 paciente.setMedicamento(novoMedicamento);
-                pacienteList.remove(p);
-                pacienteList.add(paciente);
+                break;
             }
         }
 
@@ -66,6 +74,17 @@ public class ControllerPaciente {
                 p.setDispositivo(dispositivo);
             }
         }
+    }
+
+    public static void removeDispositivo(String cpf){
+
+        for(Paciente paciente:pacienteList){
+            if(paciente.getCpf().equals(cpf)){
+                Dispositivo novoDispositivo = new Dispositivo();
+                paciente.setDispositivo(novoDispositivo);
+            }
+        }
+
     }
 
     public static boolean checaExistente(ArrayList<String> login){
