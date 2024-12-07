@@ -1,6 +1,7 @@
-package Main;
+package Test;
 
 import Controller.*;
+import Main.Login;
 import Model.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
