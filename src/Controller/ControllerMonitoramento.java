@@ -1,6 +1,7 @@
 package Controller;
 
 import Main.Create;
+import Model.Medico;
 import Model.Monitoramento;
 import View.View;
 
@@ -36,5 +37,8 @@ public class ControllerMonitoramento {
     //Remove um Monitoramento
     public static void removeMonitoramento (String cpf) {
         monitoramentoList.removeIf(monitoramento -> monitoramento.getPaciente().getCpf().equals(cpf));
+    }
+    public static List<Monitoramento> retornaLista(){
+        return monitoramentoList;
     }
 }

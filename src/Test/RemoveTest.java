@@ -27,7 +27,16 @@ public class RemoveTest {
     }
 
     @Test
-    public void testExclusaoRemoverPrescricao() {
+    public void testRemoverPaciente(){
+        Paciente paciente1 = new Paciente("nome1", "cpf1", "dataNasc1", "endereco1", 985600001, "email1", "historico1");
+        ControllerPaciente.retornaLista().add(paciente1);
+        ControllerPaciente.removePaciente(paciente1);
+
+        Assertions.assertNotNull(ControllerPaciente.readPaciente("cpf1"));
+    }
+
+    @Test
+    public void testRemoverPrescricao() {
         Paciente paciente = new Paciente("nome1", "cpf1", "dataNasc1", "endereco1", 985600001, "email1", "historico1");
         Medicamento medicamento = new Medicamento("nomemedicamento", 50, 20, "descricao", "dataVenc", "prescricao");
         paciente.setMedicamento(medicamento);
@@ -38,7 +47,7 @@ public class RemoveTest {
     }
 
     @Test
-    public void testExclusaoRemoverDispositivoPaciente() {
+    public void testRemoverDispositivoPaciente() {
         Paciente paciente = ControllerPaciente.readPaciente("cpf1");
         Dispositivo dispositivo = new Dispositivo("tipo1", "marca1", "modelo1", "status1", 50);
 
@@ -50,14 +59,14 @@ public class RemoveTest {
     }
 
     @Test
-    public void testExclusaoRemoverDispositivo() {
+    public void testRemoverDispositivo() {
         ControllerPaciente.removeDispositivo("cpf1");
 
         assertNotNull(ControllerDispositivo.readDispositivo("tipo1"));
     }
 
     @Test
-    public void testExclusaoRemoverAlerta() {
+    public void testRemoverAlertaPaciente() {
         Paciente paciente = new Paciente("nome1", "cpf1", "dataNasc1", "endereco1", 985600001, "email1", "historico1");
         ControllerPaciente.retornaLista().add(paciente);
         ControllerAlerta.retornaLista().add(new Alerta("tipo1", "mensagem1", paciente, new Medico(), "data1"));
@@ -69,8 +78,10 @@ public class RemoveTest {
         assertNull(alerta);
     }
 
+    // Rodar_com_todo_test.
     @Test
-    public void testExclusaoOpcaoInvalida() {
+    public void testOpcaoInvalida() {
+        assertEquals(5, ControllerPaciente.retornaLista().size());
         assertEquals(4, ControllerDispositivo.retornaLista().size());
         assertEquals(5, ControllerPaciente.retornaLista().size());
         assertEquals(4, ControllerAlerta.retornaLista().size());
