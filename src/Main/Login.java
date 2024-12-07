@@ -14,4 +14,9 @@ public class Login {
             menu.exibirMensagem("Conta não encontrada.");
         }
     }
+
+
+    public boolean isMedico() {
+        return isMedico;
+    }
 }

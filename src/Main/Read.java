@@ -1,9 +1,6 @@
 package Main;
 
 import Controller.*;
-import Model.*;
-
-import java.util.List;
 
 public class Read {
 
