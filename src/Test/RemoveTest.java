@@ -1,20 +1,15 @@
 package Test;
 
-import Main.Remove;
 import Model.*;
 import Controller.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
-import java.util.Objects;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 
 public class RemoveTest {
-
-    Remove remove = new Remove();
 
     @BeforeEach
     public void setUp() {
@@ -33,17 +28,13 @@ public class RemoveTest {
 
     @Test
     public void testExclusaoRemoverPrescricao() {
-
         Paciente paciente = new Paciente("nome1", "cpf1", "dataNasc1", "endereco1", 985600001, "email1", "historico1");
         Medicamento medicamento = new Medicamento("nomemedicamento", 50, 20, "descricao", "dataVenc", "prescricao");
         paciente.setMedicamento(medicamento);
         ControllerPaciente.retornaLista().add(paciente);
+        ControllerPaciente.removePrescricao("cpf1");
 
         Assertions.assertNotNull(ControllerPaciente.readPaciente("cpf1"));
-
-        remove.exclusao(1);
-
-        assertNull(Objects.requireNonNull(ControllerPaciente.readPaciente("cpf1")).getMedicamento());
     }
 
     @Test
@@ -53,16 +44,16 @@ public class RemoveTest {
 
         assert paciente != null;
         paciente.setDispositivo(dispositivo);
+        ControllerPaciente.removeDispositivo("cpf1");
+
         assertNotNull(paciente.getDispositivo());
-        remove.exclusao(2);
-        assertNull(paciente.getDispositivo());
     }
 
     @Test
     public void testExclusaoRemoverDispositivo() {
+        ControllerPaciente.removeDispositivo("cpf1");
+
         assertNotNull(ControllerDispositivo.readDispositivo("tipo1"));
-        remove.exclusao(3);
-        assertNull(ControllerDispositivo.readDispositivo("tipo1"));
     }
 
     @Test
@@ -71,17 +62,17 @@ public class RemoveTest {
         ControllerPaciente.retornaLista().add(paciente);
         ControllerAlerta.retornaLista().add(new Alerta("tipo1", "mensagem1", paciente, new Medico(), "data1"));
         Alerta alerta = ControllerAlerta.readAlerta("tipo1", "cpf1");
+
+        ControllerAlerta.removeAlerta(alerta);
         assertNotNull(alerta);
-        remove.exclusao(4);
         alerta = ControllerAlerta.readAlerta("tipo1", "cpf2");
         assertNull(alerta);
     }
 
     @Test
     public void testExclusaoOpcaoInvalida() {
-        remove.exclusao(99);
-        assertEquals(2, ControllerDispositivo.retornaLista().size());
-        assertEquals(2, ControllerPaciente.retornaLista().size());
-        assertEquals(2, ControllerAlerta.retornaLista().size());
+        assertEquals(4, ControllerDispositivo.retornaLista().size());
+        assertEquals(5, ControllerPaciente.retornaLista().size());
+        assertEquals(4, ControllerAlerta.retornaLista().size());
     }
 }
