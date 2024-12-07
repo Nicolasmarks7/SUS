@@ -1,5 +1,6 @@
-package Main;
+package Test;
 
+import Main.Remove;
 import Model.*;
 import Controller.*;
 import org.junit.jupiter.api.Assertions;
