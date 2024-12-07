@@ -10,10 +10,10 @@ import java.util.List;
 public class ControllerAgendamento {
 
     private static List<Agendamento> agendamentoList = new ArrayList<>();
-    Create create = new Create();
 
     //Adiciona um agendamento
-    public void createAgendamento (Agendamento agendamento){
+    public static void createAgendamento (Agendamento agendamento){
+        Create create = new Create();
         if(create.criarAgendamento(agendamento)!=null)agendamentoList.add(agendamento);
     }
     //Visualiza/Busca um Agendamento

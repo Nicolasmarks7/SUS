@@ -10,10 +10,10 @@ import java.util.List;
 public class ControllerMedico {
 
     private static List<Medico> medicoList = new ArrayList<>();
-    Create create = new Create();
 
     //Adiciona um médico
-    public void createMedico (Medico medico){
+    public static void createMedico (Medico medico){
+        Create create = new Create();
         medicoList.add(create.criarMedico(medico));
     }
     //Visualiza/Busca um médico

@@ -11,14 +11,21 @@ import java.util.List;
 public class ControllerAlerta {
 
     private static List<Alerta> alertaList = new ArrayList<>();
-    Create create = new Create();
 
     //Adiciona um Alerta
-    public void createAlerta (Alerta alerta){
+    public static void createAlerta (Alerta alerta){
+        Create create = new Create();
         if(create.criarAlerta(alerta)!=null)alertaList.add(alerta);
     }
+
     //Visualiza/Busca um Alerta
-    public static void readAlerta (Alerta alerta){
+    public static Alerta  readAlerta (String tipo, String cpfPaciente) {
+        for (Alerta alerta : alertaList) {
+            if (alerta.getTipo().equals(tipo) && alerta.getPaciente().getCpf().equals(cpfPaciente)) {
+                return alerta;
+            }
+        }
+        return null;
 
     }
 

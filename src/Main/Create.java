@@ -7,15 +7,15 @@ import java.util.Scanner;
 
 public class Create {
 
-    Menu menu = new Menu();
-    Scanner scan = new Scanner(System.in);
+    private static Scanner scan = new Scanner(System.in);
+    private static Menu menu = new Menu();
 
     public void criarPrescricao(){
 
         String cpf;
 
         do{
-            menu.exibirMensagem("Digitge o cpf do paciente que criar a prescrição: ");
+            menu.exibirMensagem("Digite o cpf do paciente que criar a prescrição: ");
             cpf = scan.nextLine();
             if(cpf.length()!=11)menu.exibirMensagem("Digite um cpf válido.");
         }while(cpf.length()!=11);

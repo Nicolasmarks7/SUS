@@ -10,10 +10,10 @@ import java.util.List;
 public class ControllerDispositivo {
 
     private static List<Dispositivo> dispositivoList = new ArrayList<>();
-    Create create = new Create();
 
     //Adiciona um Dispositivo
-    public void createDispositivo (Dispositivo dispositivo){
+    public static void createDispositivo (Dispositivo dispositivo){
+        Create create = new Create();
         dispositivoList.add(create.criarDispositivo(dispositivo));
     }
     //Visualiza/Busca um Dispositivo

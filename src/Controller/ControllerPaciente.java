@@ -10,15 +10,11 @@ import java.util.List;
 public class ControllerPaciente {
 
     private static List<Paciente> pacienteList = new ArrayList<>();
-    Create create = new Create();
 
     //Adiciona um paciente
-    public void createPaciente (Paciente paciente){
+    public static void createPaciente (Paciente paciente){
+        Create create = new Create();
         if(create.criarPaciente(paciente) != null)pacienteList.add(paciente);
-    }
-    //Visualiza/Busca um paciente
-    public static void readPaciente (Paciente paciente){
-
     }
 
     public static void criaPrescricao(Paciente paciente, Medicamento medicamento){

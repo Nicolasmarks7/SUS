@@ -10,10 +10,10 @@ import java.util.List;
 public class ControllerMonitoramento {
 
     private static List<Monitoramento> monitoramentoList = new ArrayList<>();
-    Create create = new Create();
 
     //Adiciona um Monitoramento
-    public void createMonitoramento (Monitoramento monitoramento){
+    public static void createMonitoramento (Monitoramento monitoramento){
+        Create create = new Create();
         if(create.criarMonitoramento(monitoramento)!=null){
             monitoramentoList.add(monitoramento);
             ControllerPaciente.addDispositivo(monitoramento);
